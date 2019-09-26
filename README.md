@@ -173,3 +173,133 @@ Pour faire référence à AnimatedListState, fournissez une clé GlobalKey ou ut
 >s'agissant du cadre, ils sont le même widget et le widget existant peut être mis à jour avec les nouveaux paramètres. Pour forcer la transition, définissez une clé sur chaque widget
 >enfant que vous souhaitez considérer comme unique (en règle générale, une valeur ValueKey sur les données du widget permettant de distinguer cet enfant des autres).
 
+#21 animatedContainer
+>AnimatedContainer s'animera automatiquement entre l'ancienne et la nouvelle valeur des propriétés lorsqu'elles changeront à l'aide de >la courbe et de la durée fournies.
+>Les propriétés qui sont nulles ne sont pas animées. Son enfant et ses descendants ne sont pas animés.
+>Cette classe est utile pour générer des transitions implicites simples entre différents paramètres vers Container avec son >AnimationController interne.
+
+#22 AbsorbPointer
+>propriété : (absorbing: bool,ignoringSemantics: bool, child,)
+>Considérons un carré rouge et bleu, les deux cliquables, où le carré bleu est plus petit et au-dessus du carré rouge:
+>Par défaut, sans IgnorePointer / AbsorbPointer, enregistrer en bleu un événement de clic sur bleu et rouge n'obtient rien.
+>Dans cette situation, insérer un carré bleu dans un AbsorbPointer signifie que lorsque vous appuyez sur la zone bleue, 
+>ni le carré bleu ni le carré rouge n'obtiennent l'événement de clic.
+>Si nous utilisions plutôt un IgnorePointer, le carré rouge recevrait des événements de clic lors de l'enregistrement du carré bleu.
+
+#23 Wrap
+
+>proprété :
+>spacing: 8.0, (permet un espacement entre les anfant de manière vertical si l'alignement du Wrap est vertical)
+>runSpacing: 20.0,(permet un espacement entre les anfant de manière horizontal si l'alignement du Wrap est horizontal)
+>alignment: WrapAlignment.center,(permet d'ajuster les elements au centre ou place le premiere element aux cenntre)
+
+#24 Transform
+
+>c'est Un widget qui applique une transformation sur son enfant.
+
+#Transform.rotate(angle: 3.14/2,child: ...)
+>-angle permet de definir l'angle de rotation;
+>-child est son enfant et il prent un widget en parametre.
+
+#Transform.scale(scale:1, child: ...)
+>scale permet d'augmenter le volume de child selon la valeur definie;
+>-child est son enfant et il prent un widget en parametre.
+
+#Transform.translate(offset: Offset(0, 0),chlid: ...)
+>-offset permet de deplacer un child d'un point A à un point B;
+>-child est son enfant et il prent un widget en parametre.
+
+#Transform(transform: Matrix4.skew(0, 3),chlid: ...)
+>-transform permet de deformer un child;
+>-child est son enfant et il prent un widget en parametre.
+
+#25 Tooltip
+
+>Tooltip permet d'affiché Une infobulle avec un text a l'intérieur.
+>Les info-bulles fournissent des étiquettes de texte permettant d'expliquer la fonction d'un bouton ou d'une autre action de >l'interface utilisateur. 
+>Enveloppez le bouton dans un widget Info-bulle pour afficher une étiquette lorsque vous appuyez longuement sur le widget 
+>(ou lorsque l'utilisateur effectue une autre action appropriée).
+
+#Propriété :
+>tooltip: 'button reveil' (l'orsqu'il est placer à l'interieur d'un autre widget);
+>Tooltip(child , message , verticalOffset, height)
+>-child c'est l'objet à afficher, -message c'est le message contenue dans l'infobule,
+>-vertialOffset permet de definir un espacement entre l'infobule et l'object child
+>-height permet de donner une taille a l'objet child
+
+#26 Table 
+>c'est Un widget qui place ses enfants dans un tablaux.
+>Table(border: TableBorder.all(),defaultColumnWidth: FractionColumnWidth(.25),defaultVerticalAlignment: TableCellVerticalAlignment.top,
+>columnWidths: {1: FractionColumnWidth(.2)},)
+>-border permet de donner une bordure achaque enfant;
+>- defaultColumnWidth definit le comportement des enfants du tableaux en fonction des column;
+>- defaultVerticalAlignment definit un alignement verticale.
+
+#27 StreamBuilder
+
+>Widget qui se construit à partir du dernier instantané d'interaction avec un flux.
+>La reconstruction du widget est planifiée par chaque interaction
+
+>28 SliverAppBar
+
+>c'est un widget qui permert de créer de bar flotantes, il s'utilise à l'interieur d'un CustomScrollView()
+>SliverAppBar(actions: <Widget>[Icon(...)], expandedHeight: 90.0, floating: bool,pinned: bool,snap: bool,)
+>- actions permet de placer des widgets à gauche de la barre.
+>- expandedHeight permet de donner une hauteur à la SliverAppBar.
+>-floating rend flottante la bar au-dessus de ListView, que vous pouvez faire défiler.L'attribut flottant prend une valeur booléenne. 
+>Si la valeur est true, la barre d’application flotte dès que la liste est déroulée.
+>Si la valeur est False, la barre d’application n’apparaît que si le haut de la liste apparaît.
+>- pinned permet à l'AppBar d'être épinglé au début et ne laisse que le défilement se dérouler. 
+>Si la valeur est false, le défilement aura lieu, mais la barre ne sera pas épinglé.
+>- snap est similaire à l'attribut Floating, sauf que si cet attribut est défini sur true, le contrôle AppBar s'affiche dans la vue au >lieu de défiler!
+>Un très petit changement peut fournir une meilleure animation sur l'application.
+>L'accrochage nécessite que l'attribut Floating soit défini uniquement pour que l'animation puisse être vue clairement.
+
+#29 SliverList et SliverGrid
+
+>SliverList  permet de creer une list ou les widget son placer verticalement
+>SliverGrid permet de creer une list ou les widget son placer horitalement
+
+#30 SizeBox 
+>Une boîte avec une taille spécifiée.
+
+>Si un enfant lui est attribué, ce widget oblige son enfant à avoir une largeur et / ou une hauteur spécifique 
+>(en supposant que les valeurs sont autorisées par le parent de ce widget). Si la largeur ou la hauteur est nulle,
+>ce widget se dimensionnera pour correspondre à la taille de l'enfant dans cette dimension.
+>Si aucun enfant n’est donné, SizedBox essaiera de se redimensionner lui-même aussi près que possible de la hauteur et de la largeur >spécifiées, 
+>en tenant compte des contraintes du parent. Si height ou width est nul ou non spécifié, il sera traité comme zéro.
+
+>SizeBox(width: ...,height: ...)
+>pour specifier une taile et une longueur on leur atribue une valeur sinon on utilise double.infinity pour prendre l'espace disponible
+
+#31 SafeArea
+
+>Un widget qui insère son enfant par un remplissage suffisant pour éviter les intrusions du système d'exploitation.
+>Par exemple, cela indentera suffisamment l'enfant pour éviter la barre d'état en haut de l'écran.
+
+#32 Positioned
+
+>Un widget qui permet de posionner ses enfants 
+>Positioned(top:...,right:...,bottom:...,left:..., child)
+>-top deplace du haut vers le bas;
+>-bottom deplace du bas vers le haut;
+>-right deplace de la droite vers la gauche;
+>- left deplace de la gauche vers la doite
+
+#33 PageView
+
+>Une liste déroulante qui fonctionne page par page.
+>PageView(scrollDirection: Axis.vertical,children[])
+>scrollDirection permet de definir la direction du defilement des page
+
+#34 Opacity
+
+>c'est un widget qui permet de diminué l'opacity de son enfant grâce a la propriété Opacity
+>Opacity(opacity: 0.50,child)
+
+#35 LayoutBuilder 
+>Construit une arborescence de widgets pouvant dépendre de la taille du widget parent.
+
+>Ceci est utile lorsque le parent limite la taille de l'enfant et ne dépend pas de sa taille intrinsèque. 
+>La taille finale du LayoutBuilder correspondra à la taille de son enfant.
+
